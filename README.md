@@ -369,9 +369,13 @@ kubeadm init --config /etc/kubernetes/aws.yaml --ignore-preflight-errors=NumCPU
 
 After cluster init, you'll get **unique token** for worker node join:
 
-kubeadm join **10.0.0.119:6443** --token **i4pna1.8tlp6kcmukr5sian** --discovery-token-ca-cert-hash **sha256:c2974f5f46e06df9bddd532ac61617ada82943b09ee914847fd8f15f7b8ff008**
+kubeadm join **10.0.0.119:6443** --token **i4pna1.8tlp6kcmukr5sian** --discovery-token-ca-cert-hash **sha256:c2974f5f46e06df9bddd532ac61617ada82943b09ee914847fd8f15f7b8ff008** 
 
-save it, we'll use later in worker node
+
+save it, we'll use later in worker node [if this fails ,use the command 
+# kubeadm token create --print-join-command
+
+[[if both thorw error ,do the following and try again with the kubeadm token create]]
 
 ```bash
 # save kube config
@@ -436,8 +440,8 @@ this is the masters apiserer
 
 caCertHashes: **"sha256:c2974f5f46e06df9bddd532ac61617ada82943b09ee914847fd8f15f7b8ff008"**
 
-name: **ip-10-0-0-186.eu-west-3.compute.internal**
-it is the host name of the node ,u can get it with this command $hostname -f 
+
+name: **ip-10-0-0-186.eu-west-3.compute.internal** (it is the host name of the node ,u can get it with this command $hostname -f )
 
 ```bash
 cat << EOF > /etc/kubernetes/node.yml
