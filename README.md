@@ -432,10 +432,12 @@ Replace `/etc/kubernetes/node.yml` config below with your own:
 Token: **"i4pna1.8tlp6kcmukr5sian"**
 
 apiServerEndpoint: **"10.0.0.119:6443"**
+this is the masters apiserer
 
 caCertHashes: **"sha256:c2974f5f46e06df9bddd532ac61617ada82943b09ee914847fd8f15f7b8ff008"**
 
 name: **ip-10-0-0-186.eu-west-3.compute.internal**
+it is the host name of the node ,u can get it with this command $hostname -f 
 
 ```bash
 cat << EOF > /etc/kubernetes/node.yml
@@ -461,13 +463,19 @@ kubeadm join --config /etc/kubernetes/node.yml
 
 ```
 
-## Check Nodes
+if the join fails for the first time ,u need to reset the kubeadm and then join again .or else it will throw error becoz the previous attempt configs would have been created and conflicts with the new join request
+$ kubeadm reset
+$ kubeadm init
+$ kubeadm join --config /etc/kubernetes/node.yml
 
+## Check Nodes
+ow to check if the joining was successfull ,
 Go back to master to check the nodes
 
 ```bash
 # check nodes
 kubectl get nodes
+kubectl get pods -A
 
 ```
 
