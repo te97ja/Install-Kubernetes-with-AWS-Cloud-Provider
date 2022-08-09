@@ -372,10 +372,10 @@ After cluster init, you'll get **unique token** for worker node join:
 kubeadm join **10.0.0.119:6443** --token **i4pna1.8tlp6kcmukr5sian** --discovery-token-ca-cert-hash **sha256:c2974f5f46e06df9bddd532ac61617ada82943b09ee914847fd8f15f7b8ff008** 
 
 
-save it, we'll use later in worker node [if this fails ,use the command 
-# kubeadm token create --print-join-command
+save it, we'll use later in worker node 
+[if this fails ,use the command "$ kubeadm token create --print-join-command"
 
-[[if both thorw error ,do the following and try again with the kubeadm token create]]
+[[if both throw error ,do the following and try again with the kubeadm token create]]
 
 ```bash
 # save kube config
